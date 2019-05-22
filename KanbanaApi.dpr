@@ -6,18 +6,9 @@ program KanbanaApi;
 uses
   Horse,
   Horse.Jhonson,
-  Controllers.Users in 'Src\Controllers\Controllers.Users.pas',
-  Providers.Mongo in 'Src\Providers\Providers.Mongo.pas',
-  ugar.connection.Imp in '..\ugar\src\ugar.connection.Imp.pas',
-  ugar.db.mongo.Enum in '..\ugar\src\ugar.db.mongo.Enum.pas',
-  ugar.db.mongo.Func in '..\ugar\src\ugar.db.mongo.Func.pas',
-  ugar.db.mongo.Imp in '..\ugar\src\ugar.db.mongo.Imp.pas',
-  ugar.db.mongo.internals in '..\ugar\src\ugar.db.mongo.internals.pas',
-  ugar.db.Mongo in '..\ugar\src\ugar.db.Mongo.pas',
-  ugar.db.mongo.Protocol in '..\ugar\src\ugar.db.mongo.Protocol.pas',
-  ugar.db.mongo.protocol.Types in '..\ugar\src\ugar.db.mongo.protocol.Types.pas',
-  ugar.db.mongo.Query in '..\ugar\src\ugar.db.mongo.Query.pas',
-  Ugar in '..\ugar\src\Ugar.pas';
+  Controllers.Boards in 'Src\Controllers\Controllers.Boards.pas',
+  Providers.Connection in 'Src\Providers\Providers.Connection.pas' {ProviderConnection: TDataModule},
+  Services.Boards in 'Src\Services\Services.Boards.pas' {ServiceBoards: TDataModule};
 
 var
   App: THorse;
@@ -29,7 +20,7 @@ begin
   try
     App.Use(Jhonson);
 
-    Users(App);
+    Boards(App);
 
     App.Start;
   finally

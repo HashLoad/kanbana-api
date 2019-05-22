@@ -2,7 +2,15 @@ version: '2.1'
 
 services:
   horse:
-    image: hashload/delphi-dev:10.3.1-rio
+    build: Docker/Horse
+    environment:
+      DB_USER: 'postgres'
+      DB_PASSWORD: 'postgres'
+      DB_DATABASE: 'kanbana'
+      DB_PORT: '5432'
+      DB_HOST: 'postgres'
+    links:
+      - postgres
     privileged: true
     tty: true
     ports:
@@ -21,7 +29,7 @@ services:
     volumes:
       - ./Src/Migrations:/migrations
     links:
-      - postgres:postgres
+      - postgres
   
   pgadmin:
     image: dpage/pgadmin4
@@ -31,9 +39,9 @@ services:
     volumes:
        - pgadmin-data:/var/lib/pgadmin
     ports:
-      - "5050:80"
+      - '5050:80'
     links:
-      - postgres:postgres
+      - postgres
     logging:
       driver: 'none'
 
@@ -46,7 +54,7 @@ services:
     volumes:
        - pg-data:/data/postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
 
 volumes:
   pg-data:
