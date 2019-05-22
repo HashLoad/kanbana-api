@@ -1,0 +1,12 @@
+{
+	"name": "kanbana-api",
+	"description": "Project Manager",
+	"version": "0.0.1",
+	"homepage": "https://github.com/HashLoad",
+	"mainsrc": "Src",
+	"projects": [],
+	"dependencies": {
+		"github.com/hashload/horse": "^v1.6.4",
+		"github.com/hashload/jhonson": "^1.0.2"
+	}
+}

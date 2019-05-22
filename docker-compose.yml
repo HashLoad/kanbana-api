@@ -1,0 +1,53 @@
+version: '2.1'
+
+services:
+  horse:
+    image: hashload/delphi-dev:10.3.1-rio
+    privileged: true
+    tty: true
+    ports:
+      - '9000:9000'
+      - '64211:64211'    
+
+  goose:
+    build: Docker/Goose
+    environment:
+      GOOSE_DRIVER: 'postgres'
+      GOOSE_DATABASE: 'kanbana'
+      GOOSE_USER: 'postgres'
+      GOOSE_HOST: 'postgres'
+      GOOSE_PASSWORD: 'postgres'
+      GOOSE_PORT: '5432'
+    volumes:
+      - ./Src/Migrations:/migrations
+    links:
+      - postgres:postgres
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'postgres'
+      PGADMIN_DEFAULT_PASSWORD: 'postgres'
+    volumes:
+       - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    links:
+      - postgres:postgres
+    logging:
+      driver: 'none'
+
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'kanbana'
+      PGDATA: '/data/postgres'
+    volumes:
+       - pg-data:/data/postgres
+    ports:
+      - "5432:5432"
+
+volumes:
+  pg-data:
+  pgadmin-data:    

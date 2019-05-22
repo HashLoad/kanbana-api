@@ -1,0 +1,2 @@
+FROM hashload/goose
+CMD ["bash" , "-c", "waitforit -address=tcp://$GOOSE_HOST:$GOOSE_PORT -timeout=120 -- sleep 3 && goose $GOOSE_DRIVER \"host=$GOOSE_HOST port=$GOOSE_PORT user=$GOOSE_USER dbname=$GOOSE_DATABASE password=$GOOSE_PASSWORD sslmode=disable\" up"]

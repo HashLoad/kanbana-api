@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "__*": true,
+        "*.identcache": true,
+        "*.local": true,
+        "*.stat": true,
+        "modules": true,
+        "Win32": true
+    }
+}
