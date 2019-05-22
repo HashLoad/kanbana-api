@@ -54,7 +54,7 @@
         <DCC_K>false</DCC_K>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <SanitizedProjectName>KanbanaApi</SanitizedProjectName>
-        <DCC_UnitSearchPath>D:\OneDrive\projects\hashload\kanbana-api\modules\horse\src\;D:\OneDrive\projects\hashload\kanbana-api\modules\ugar\src\;$(DCC_UnitSearchPath);modules\DataSetConverter4Delphi\src;modules\DataSetConverter4Delphi\unittest;modules\.dcp;modules\.dcp;modules\horse\src;modules\.dcp;modules\.dcp;modules\jhonson\src;modules\.dcp;modules\.dcp;modules\ragna\src;modules\.dcp;modules\.dcp</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>D:\OneDrive\projects\hashload\kanbana-api\modules\horse\src\;D:\OneDrive\projects\hashload\kanbana-api\modules\ugar\src\;modules\DataSetConverter4Delphi\src;modules\DataSetConverter4Delphi\unittest;modules\.dcp;modules\.dcp;modules\horse\src;modules\.dcp;modules\.dcp;modules\jhonson\src;modules\.dcp;modules\.dcp;modules\ragna\src;modules\.dcp;modules\.dcp;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Linux64)'!=''">
         <DCC_UsePackage>RESTComponents;emsclientfiredac;DataSnapFireDAC;FireDACADSDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;inetdb;emsedge;FireDACIBDriver;dbexpress;IndyCore;dsnap;emsclient;DataSnapCommon;FireDACCommon;RESTBackendComponents;DataSnapConnectors;soapserver;bindengine;CloudService;FireDACOracleDriver;FireDACMySQLDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;IndySystem;FireDACDb2Driver;FireDACInfxDriver;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;FireDACASADriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;rtl;emsserverresource;DbxClientDriver;CustomIPTransport;bindcomp;dbxcds;FireDACODBCDriver;DataSnapIndy10ServerTransport;dsnapxml;dbrtl;IndyProtocols;FireDACMongoDBDriver;DataSnapServerMidas;$(DCC_UsePackage)</DCC_UsePackage>
@@ -100,7 +100,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Src\Controllers\Controllers.Boards.pas"></DCCReference>
+        <DCCReference Include="Src\Controllers\Controllers.Boards.pas"/>
         <DCCReference Include="Src\Providers\Providers.Connection.pas">
             <Form>ProviderConnection</Form>
             <FormType>dfm</FormType>
@@ -108,6 +108,12 @@
         </DCCReference>
         <DCCReference Include="Src\Services\Services.Boards.pas">
             <Form>ServiceBoards</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Src\Controllers\Controllers.Sections.pas"/>
+        <DCCReference Include="Src\Services\Services.Sections.pas">
+            <Form>ServiceSections</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -633,15 +639,15 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"></ProjectRoot>
-                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"></ProjectRoot>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"></ProjectRoot>
-                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"></ProjectRoot>
-                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"></ProjectRoot>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"></ProjectRoot>
-                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"></ProjectRoot>
-                <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"></ProjectRoot>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"></ProjectRoot>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Linux64">True</Platform>
@@ -651,7 +657,7 @@
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
-    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"></Import>
-    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"></Import>
-    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"></Import>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
 </Project>
