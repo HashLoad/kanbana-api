@@ -56,6 +56,11 @@
 *.tvsconfig
 *.dsk
 
+# Plataform
+Win32
+Win64
+Linux64
+
 # Delphi history and backups
 __history/
 __recovery/
