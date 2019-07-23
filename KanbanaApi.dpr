@@ -12,7 +12,14 @@ uses
   Controllers.Sections in 'Src\Controllers\Controllers.Sections.pas',
   Services.Sections in 'Src\Services\Services.Sections.pas' {ServiceSections: TDataModule},
   Controllers.Tasks in 'Src\Controllers\Controllers.Tasks.pas',
-  Services.Tasks in 'Src\Services\Services.Tasks.pas' {ServiceTasks: TDataModule};
+  Services.Tasks in 'Src\Services\Services.Tasks.pas' {ServiceTasks: TDataModule},
+  Controllers.Login in 'Src\Controllers\Controllers.Login.pas',
+  Configs.Login in 'Src\Configs\Configs.Login.pas',
+  Providers.Authorization in 'Src\Providers\Providers.Authorization.pas',
+  Services.Users in 'Src\Services\Services.Users.pas' {ServiceUsers: TDataModule},
+  Providers.Encrypt in 'Src\Providers\Providers.Encrypt.pas',
+  Configs.Encrypt in 'Src\Configs\Configs.Encrypt.pas',
+  Controllers.Users in 'Src\Controllers\Controllers.Users.pas';
 
 var
   App: THorse;
@@ -24,6 +31,8 @@ begin
   try
     App.Use(Jhonson);
 
+    Login(App);
+    Users(App);
     Boards(App);
     Sections(App);
     Tasks(App);

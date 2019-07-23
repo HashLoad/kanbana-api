@@ -1,9 +1,7 @@
 inherited ServiceTasks: TServiceTasks
+  OldCreateOrder = True
   Height = 281
   Width = 383
-  inherited FDConnection: TFDConnection
-    Connected = True
-  end
   object Tasks: TFDQuery
     Connection = FDConnection
     SQL.Strings = (

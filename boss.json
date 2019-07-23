@@ -6,7 +6,9 @@
 	"mainsrc": "Src",
 	"projects": [],
 	"dependencies": {
-		"github.com/hashload/horse": "^v1.6.4",
+		"github.com/hashload/horse": "^1.6.7",
+		"github.com/hashload/horse-basic-auth": "^v1.0.0",
+		"github.com/hashload/horse-jwt": "^v1.1.6",
 		"github.com/hashload/jhonson": "^1.0.2",
 		"github.com/hashload/ragna": "^1.1.0"
 	}

@@ -1,4 +1,4 @@
-FROM hashload/delphi-dev:10.3.1-rio
+FROM hashload/delphi-dev:10.3.2-rio
 RUN apt-get -y update \
     && apt-get -y install \
         libpq5 \
