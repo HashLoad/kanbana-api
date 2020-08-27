@@ -11,15 +11,10 @@ uses Horse, System.JSON, Ragna, Providers.Authorization, Services.Users;
 procedure DoGetUsers(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Users: TServiceUsers;
-  JSON: TJSONArray;
 begin
   Users := TServiceUsers.Create;
   try
-    Users
-      .Get
-      .ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Users.Get.ToJSONArray());
   finally
     Users.Free;
   end;
@@ -28,15 +23,10 @@ end;
 procedure DoPostUser(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Users: TServiceUsers;
-  JSON: TJSONObject;
 begin
   Users := TServiceUsers.Create;
   try
-    Users
-      .Post(Req.Body<TJSONObject>)
-      .ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Users.Post(Req.Body<TJSONObject>).ToJSONObject()).Status(THTTPStatus.Created);
   finally
     Users.Free;
   end;

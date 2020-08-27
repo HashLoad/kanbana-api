@@ -11,17 +11,13 @@ uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Tasks, SysUtil
 procedure DoPostTask(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Tasks: TServiceTasks;
-  JSON: TJSONObject;
   BoardId, SectionId: Integer;
 begin
   Tasks := TServiceTasks.Create;
   try
     BoardId := Req.Params['board_id'].ToInteger;
     SectionId := Req.Params['section_id'].ToInteger;
-
-    Tasks.Post(BoardId, SectionId, Req.Body<TJSONObject>).ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Tasks.Post(BoardId, SectionId, Req.Body<TJSONObject>).ToJSONObject()).Status(THTTPStatus.Created);
   finally
     Tasks.Free;
   end;
@@ -30,17 +26,13 @@ end;
 procedure DoGetTasks(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Tasks: TServiceTasks;
-  JSON: TJSONArray;
   BoardId, SectionId: Integer;
 begin
   Tasks := TServiceTasks.Create;
   try
     BoardId := Req.Params['board_id'].ToInteger;
     SectionId := Req.Params['section_id'].ToInteger;
-
-    Tasks.Get(BoardId, SectionId).ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Tasks.Get(BoardId, SectionId).ToJSONArray());
   finally
     Tasks.Free;
   end;

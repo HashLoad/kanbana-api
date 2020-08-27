@@ -10,17 +10,13 @@ uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Sections, SysU
 
 procedure DoPostSection(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
-  Sections: TServiceSections;
-  JSON: TJSONObject;
   BoardId: Integer;
+  Sections: TServiceSections;
 begin
   Sections := TServiceSections.Create;
   try
     BoardId := Req.Params['board_id'].ToInteger;
-
-    Sections.Post(BoardId, Req.Body<TJSONObject>).ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Sections.Post(BoardId, Req.Body<TJSONObject>).ToJSONObject()).Status(THTTPStatus.Created);
   finally
     Sections.Free;
   end;
@@ -28,17 +24,13 @@ end;
 
 procedure DoGetSections(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
-  Sections: TServiceSections;
-  JSON: TJSONArray;
   BoardId: Integer;
+  Sections: TServiceSections;
 begin
   Sections := TServiceSections.Create;
   try
     BoardId := Req.Params['board_id'].ToInteger;
-
-    Sections.Get(BoardId).ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Sections.Get(BoardId).ToJSONArray());
   finally
     Sections.Free;
   end;

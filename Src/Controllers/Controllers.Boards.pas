@@ -11,13 +11,10 @@ uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Boards, Config
 procedure DoPostBoard(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Boards: TServiceBoards;
-  JSON: TJSONObject;
 begin
   Boards := TServiceBoards.Create;
   try
-    Boards.Post(Req.Body<TJSONObject>).ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Boards.Post(Req.Body<TJSONObject>).ToJSONObject()).Status(THTTPStatus.Created);
   finally
     Boards.Free;
   end;
@@ -26,13 +23,10 @@ end;
 procedure DoGetBoards(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Boards: TServiceBoards;
-  JSON: TJSONArray;
 begin
   Boards := TServiceBoards.Create;
   try
-    Boards.Get.ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Boards.Get.ToJSONArray());
   finally
     Boards.Free;
   end;
