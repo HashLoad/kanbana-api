@@ -3,7 +3,6 @@ unit Configs.Login;
 interface
 
 type
-
   TConfigLogin = record
   private
     function GetExpires: Integer;
@@ -15,8 +14,7 @@ type
 
 implementation
 
-uses
-  System.SysUtils;
+uses System.SysUtils;
 
 { TConfigLogin }
 

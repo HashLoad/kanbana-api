@@ -1,7 +1,7 @@
 inherited ServiceTasks: TServiceTasks
   OldCreateOrder = True
-  Height = 281
-  Width = 383
+  Height = 148
+  Width = 304
   object Tasks: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
@@ -10,8 +10,8 @@ inherited ServiceTasks: TServiceTasks
       '  tasks.name,'
       '  tasks.section_id'
       'from tasks')
-    Left = 192
-    Top = 112
+    Left = 200
+    Top = 56
     object TasksId: TLargeintField
       AutoGenerateValue = arAutoInc
       FieldName = 'id'

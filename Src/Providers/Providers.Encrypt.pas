@@ -2,21 +2,16 @@ unit Providers.Encrypt;
 
 interface
 
-uses
-  System.SysUtils, System.Hash;
+uses System.SysUtils, System.Hash;
 
 type
-
   TProviderEncrypt = class
     class function Encrypt(Value: string): string;
   end;
 
 implementation
 
-uses
-  Configs.Encrypt;
-
-{ TProviderEncrypt }
+uses Configs.Encrypt;
 
 class function TProviderEncrypt.Encrypt(Value: string): string;
 var

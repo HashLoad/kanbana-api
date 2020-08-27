@@ -2,16 +2,14 @@ unit Providers.Authorization;
 
 interface
 
-uses
-  Horse, Horse.JWT, Horse.BasicAuthentication;
+uses Horse, Horse.JWT, Horse.BasicAuthentication;
 
 function Authorization: THorseCallback;
 function BasicAuthorization: THorseCallback;
 
 implementation
 
-uses
-  Configs.Login, Services.Users;
+uses Configs.Login, Services.Users;
 
 function DoBasicAuthentication(const Username, Password: string): Boolean;
 var

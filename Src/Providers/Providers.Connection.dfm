@@ -11,7 +11,7 @@ object ProviderConnection: TProviderConnection
     ConnectedStoredUsage = [auDesignTime]
     LoginPrompt = False
     BeforeConnect = FDConnectionBeforeConnect
-    Left = 80
-    Top = 40
+    Left = 88
+    Top = 56
   end
 end

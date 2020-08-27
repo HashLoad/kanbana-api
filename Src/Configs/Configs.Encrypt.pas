@@ -3,7 +3,6 @@ unit Configs.Encrypt;
 interface
 
 type
-
   TConfigEncrypt = record
   private
     function GetSecret: string;
@@ -13,8 +12,7 @@ type
 
 implementation
 
-uses
-  System.SysUtils;
+uses System.SysUtils;
 
 { TConfigEncrypt }
 

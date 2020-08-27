@@ -1,9 +1,7 @@
 inherited ServiceUsers: TServiceUsers
-  Height = 315
-  Width = 571
-  inherited FDConnection: TFDConnection
-    Connected = True
-  end
+  OldCreateOrder = True
+  Height = 160
+  Width = 320
   object Users: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
@@ -13,8 +11,8 @@ inherited ServiceUsers: TServiceUsers
       '  users.username,'
       '  users.password'
       'from users')
-    Left = 272
-    Top = 112
+    Left = 208
+    Top = 56
     object UsersId: TLargeintField
       AutoGenerateValue = arAutoInc
       FieldName = 'id'
