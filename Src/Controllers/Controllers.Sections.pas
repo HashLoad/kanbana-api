@@ -2,14 +2,11 @@ unit Controllers.Sections;
 
 interface
 
-uses
-  Horse, Providers.Authorization;
-
-procedure Sections(App: THorse);
+procedure Registry;
 
 implementation
 
-uses System.JSON, Ragna, Services.Sections, SysUtils;
+uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Sections, SysUtils;
 
 procedure DoPostSection(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
@@ -47,10 +44,10 @@ begin
   end;
 end;
 
-procedure Sections(App: THorse);
+procedure Registry;
 begin
-  App.Post('/boards/:board_id/sections', Authorization(), DoPostSection);
-  App.Get('/boards/:board_id/sections', Authorization(), DoGetSections);
+  THorse.Post('/boards/:board_id/sections', Authorization(), DoPostSection);
+  THorse.Get('/boards/:board_id/sections', Authorization(), DoGetSections);
 end;
 
 end.

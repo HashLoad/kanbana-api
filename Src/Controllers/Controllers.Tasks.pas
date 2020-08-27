@@ -2,14 +2,11 @@ unit Controllers.Tasks;
 
 interface
 
-uses
-  Horse, Providers.Authorization;
-
-procedure Tasks(App: THorse);
+procedure Registry;
 
 implementation
 
-uses System.JSON, Ragna, Services.Tasks, SysUtils;
+uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Tasks, SysUtils;
 
 procedure DoPostTask(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
@@ -49,10 +46,10 @@ begin
   end;
 end;
 
-procedure Tasks(App: THorse);
+procedure Registry;
 begin
-  App.Post('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoPostTask);
-  App.Get('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoGetTasks);
+  THorse.Post('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoPostTask);
+  THorse.Get('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoGetTasks);
 end;
 
 end.

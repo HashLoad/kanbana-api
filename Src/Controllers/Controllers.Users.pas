@@ -2,14 +2,11 @@ unit Controllers.Users;
 
 interface
 
-uses
-  Horse, System.JSON, Ragna;
-
-procedure Users(App: THorse);
+procedure Registry;
 
 implementation
 
-uses Providers.Authorization, Services.Users;
+uses Horse, System.JSON, Ragna, Providers.Authorization, Services.Users;
 
 procedure DoGetUsers(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
@@ -45,10 +42,10 @@ begin
   end;
 end;
 
-procedure Users(App: THorse);
+procedure Registry;
 begin
-  App.Get('/users', Authorization(), DoGetUsers);
-  App.Post('/users', Authorization(), DoPostUser);
+  THorse.Get('/users', Authorization(), DoGetUsers);
+  THorse.Post('/users', Authorization(), DoPostUser);
 end;
 
 end.

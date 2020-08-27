@@ -2,14 +2,11 @@ unit Controllers.Boards;
 
 interface
 
-uses
-  Horse, Providers.Authorization;
-
-procedure Boards(App: THorse);
+procedure Registry;
 
 implementation
 
-uses System.JSON, Ragna, Services.Boards, Configs.Login;
+uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Boards, Configs.Login;
 
 procedure DoPostBoard(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
@@ -41,10 +38,10 @@ begin
   end;
 end;
 
-procedure Boards(App: THorse);
+procedure Registry;
 begin
-  App.Post('/boards', Authorization(), DoPostBoard);
-  App.Get('/boards', Authorization(), DoGetBoards);
+  THorse.Post('/boards', Authorization(), DoPostBoard);
+  THorse.Get('/boards', Authorization(), DoGetBoards);
 end;
 
 end.

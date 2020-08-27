@@ -6,6 +6,7 @@ program KanbanaApi;
 uses
   Horse,
   Horse.Jhonson,
+  System.SysUtils,
   Controllers.Boards in 'Src\Controllers\Controllers.Boards.pas',
   Providers.Connection in 'Src\Providers\Providers.Connection.pas' {ProviderConnection: TDataModule},
   Services.Boards in 'Src\Services\Services.Boards.pas' {ServiceBoards: TDataModule},
@@ -21,25 +22,23 @@ uses
   Configs.Encrypt in 'Src\Configs\Configs.Encrypt.pas',
   Controllers.Users in 'Src\Controllers\Controllers.Users.pas';
 
-var
-  App: THorse;
-
 begin
   ReportMemoryLeaksOnShutdown := True;
 
-  App := THorse.Create(9000);
-  try
-    App.Use(Jhonson);
+  THorse.Use(Jhonson);
 
-    Login(App);
-    Users(App);
-    Boards(App);
-    Sections(App);
-    Tasks(App);
+  Controllers.Login.Registry;
+  Controllers.Users.Registry;
+  Controllers.Boards.Registry;
+  Controllers.Sections.Registry;
+  Controllers.Tasks.Registry;
 
-    App.Start;
-  finally
-    App.Free;
-  end;
-
+  THorse.Listen(9000,
+    procedure(Horse: THorse)
+    begin
+      Writeln('Server is runing on port ' + THorse.Port.ToString);
+      Write('Press return to stop...');
+      ReadLn;
+      THorse.StopListen;
+    end);
 end.
