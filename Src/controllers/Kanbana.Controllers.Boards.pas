@@ -1,4 +1,4 @@
-unit Controllers.Boards;
+unit Kanbana.Controllers.Boards;
 
 interface
 
@@ -6,7 +6,7 @@ procedure Registry;
 
 implementation
 
-uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Boards, Configs.Login;
+uses Horse, Kanbana.Providers.Authorization, System.JSON, Ragna, Kanbana.Services.Boards, Kanbana.Configs.Login;
 
 procedure DoPostBoard(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var

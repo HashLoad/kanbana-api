@@ -1,4 +1,4 @@
-unit Controllers.Users;
+unit Kanbana.Controllers.Users;
 
 interface
 
@@ -6,7 +6,7 @@ procedure Registry;
 
 implementation
 
-uses Horse, System.JSON, Ragna, Providers.Authorization, Services.Users;
+uses Horse, System.JSON, Ragna, Kanbana.Providers.Authorization, Kanbana.Services.Users;
 
 procedure DoGetUsers(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var

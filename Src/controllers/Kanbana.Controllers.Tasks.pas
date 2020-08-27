@@ -1,4 +1,4 @@
-unit Controllers.Tasks;
+unit Kanbana.Controllers.Tasks;
 
 interface
 
@@ -6,7 +6,7 @@ procedure Registry;
 
 implementation
 
-uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Tasks, SysUtils;
+uses Horse, Kanbana.Providers.Authorization, System.JSON, Ragna, Kanbana.Services.Tasks, SysUtils;
 
 procedure DoPostTask(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var

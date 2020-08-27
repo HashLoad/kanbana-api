@@ -1,4 +1,4 @@
-unit Controllers.Sections;
+unit Kanbana.Controllers.Sections;
 
 interface
 
@@ -6,7 +6,7 @@ procedure Registry;
 
 implementation
 
-uses Horse, Providers.Authorization, System.JSON, Ragna, Services.Sections, SysUtils;
+uses Horse, Kanbana.Providers.Authorization, System.JSON, Ragna, Kanbana.Services.Sections, SysUtils;
 
 procedure DoPostSection(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var

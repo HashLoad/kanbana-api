@@ -1,4 +1,4 @@
-unit Providers.Encrypt;
+unit Kanbana.Providers.Encrypt;
 
 interface
 
@@ -11,7 +11,7 @@ type
 
 implementation
 
-uses Configs.Encrypt;
+uses Kanbana.Configs.Encrypt;
 
 class function TProviderEncrypt.Encrypt(Value: string): string;
 var

@@ -1,11 +1,11 @@
-unit Services.Boards;
+unit Kanbana.Services.Boards;
 
 interface
 
-uses System.SysUtils, System.Classes, Providers.Connection, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
-  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+uses System.SysUtils, System.Classes, Kanbana.Providers.Connection, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
+  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.ConsoleUI.Wait, Data.DB, FireDAC.Comp.Client, FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.Stan.Param, FireDAC.DatS,
-  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, Ragna, System.JSON, FireDAC.VCLUI.Wait;
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, Ragna, System.JSON;
 
 type
   TServiceBoards = class(TProviderConnection)

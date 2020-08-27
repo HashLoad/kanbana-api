@@ -1,4 +1,4 @@
-unit Configs.Login;
+unit Kanbana.Configs.Login;
 
 interface
 
@@ -15,8 +15,6 @@ type
 implementation
 
 uses System.SysUtils;
-
-{ TConfigLogin }
 
 function TConfigLogin.GetExpires: Integer;
 begin

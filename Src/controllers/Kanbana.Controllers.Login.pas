@@ -1,4 +1,4 @@
-unit Controllers.Login;
+unit Kanbana.Controllers.Login;
 
 interface
 
@@ -6,7 +6,7 @@ procedure Registry;
 
 implementation
 
-uses Horse, Providers.Authorization, JOSE.Core.JWT, Configs.Login, System.JSON, System.SysUtils, System.DateUtils,
+uses Horse, Kanbana.Providers.Authorization, JOSE.Core.JWT, Kanbana.Configs.Login, System.JSON, System.SysUtils, System.DateUtils,
   JOSE.Core.Builder;
 
 procedure DoGetLogin(Req: THorseRequest; Res: THorseResponse; Next: TProc);

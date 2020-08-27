@@ -1,4 +1,4 @@
-unit Configs.Encrypt;
+unit Kanbana.Configs.Encrypt;
 
 interface
 
@@ -13,8 +13,6 @@ type
 implementation
 
 uses System.SysUtils;
-
-{ TConfigEncrypt }
 
 function TConfigEncrypt.GetSecret: string;
 begin
