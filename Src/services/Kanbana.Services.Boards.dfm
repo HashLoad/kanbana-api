@@ -1,10 +1,7 @@
 inherited ServiceBoards: TServiceBoards
   OldCreateOrder = True
-  Height = 309
-  Width = 403
-  inherited FDConnection: TFDConnection
-    Connected = True
-  end
+  Height = 156
+  Width = 317
   object Boards: TFDQuery
     Connection = FDConnection
     SQL.Strings = (

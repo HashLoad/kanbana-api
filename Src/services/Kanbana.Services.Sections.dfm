@@ -1,9 +1,7 @@
 inherited ServiceSections: TServiceSections
-  Height = 263
-  Width = 343
-  inherited FDConnection: TFDConnection
-    Connected = True
-  end
+  OldCreateOrder = True
+  Height = 152
+  Width = 300
   object Sections: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
@@ -12,8 +10,8 @@ inherited ServiceSections: TServiceSections
       '  sections.name,'
       '  sections.board_id'
       'from sections')
-    Left = 192
-    Top = 104
+    Left = 200
+    Top = 56
     object SectionsId: TLargeintField
       AutoGenerateValue = arAutoInc
       FieldName = 'id'

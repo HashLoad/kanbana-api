@@ -1,9 +1,8 @@
-unit Configs.Login;
+unit Kanbana.Configs.Login;
 
 interface
 
 type
-
   TConfigLogin = record
   private
     function GetExpires: Integer;
@@ -15,10 +14,7 @@ type
 
 implementation
 
-uses
-  System.SysUtils;
-
-{ TConfigLogin }
+uses System.SysUtils;
 
 function TConfigLogin.GetExpires: Integer;
 begin

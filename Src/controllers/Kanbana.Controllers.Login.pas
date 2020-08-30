@@ -1,16 +1,12 @@
-unit Controllers.Login;
+unit Kanbana.Controllers.Login;
 
 interface
 
-uses
-  Horse, Providers.Authorization;
-
-procedure Login(App: THorse);
+procedure Registry;
 
 implementation
 
-uses
-  JOSE.Core.JWT, Configs.Login, System.JSON, System.SysUtils, System.DateUtils,
+uses Horse, Kanbana.Providers.Authorization, JOSE.Core.JWT, Kanbana.Configs.Login, System.JSON, System.SysUtils, System.DateUtils,
   JOSE.Core.Builder;
 
 procedure DoGetLogin(Req: THorseRequest; Res: THorseResponse; Next: TProc);
@@ -27,9 +23,9 @@ begin
   Res.Send(TJSONObject.Create.AddPair('token', TJOSE.SHA256CompactToken(Config.Secret, JWT)));
 end;
 
-procedure Login(App: THorse);
+procedure Registry;
 begin
-  App.Get('/login', BasicAuthorization(), DoGetLogin);
+  THorse.Get('/login', BasicAuthorization(), DoGetLogin);
 end;
 
 end.

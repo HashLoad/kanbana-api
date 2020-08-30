@@ -1,30 +1,23 @@
-unit Controllers.Tasks;
+unit Kanbana.Controllers.Tasks;
 
 interface
 
-uses
-  Horse, Providers.Authorization;
-
-procedure Tasks(App: THorse);
+procedure Registry;
 
 implementation
 
-uses System.JSON, Ragna, Services.Tasks, SysUtils;
+uses Horse, Kanbana.Providers.Authorization, System.JSON, Ragna, Kanbana.Services.Tasks, SysUtils;
 
 procedure DoPostTask(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Tasks: TServiceTasks;
-  JSON: TJSONObject;
   BoardId, SectionId: Integer;
 begin
   Tasks := TServiceTasks.Create;
   try
     BoardId := Req.Params['board_id'].ToInteger;
     SectionId := Req.Params['section_id'].ToInteger;
-
-    Tasks.Post(BoardId, SectionId, Req.Body<TJSONObject>).ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Tasks.Post(BoardId, SectionId, Req.Body<TJSONObject>).ToJSONObject()).Status(THTTPStatus.Created);
   finally
     Tasks.Free;
   end;
@@ -33,26 +26,22 @@ end;
 procedure DoGetTasks(Req: THorseRequest; Res: THorseResponse; Next: TProc);
 var
   Tasks: TServiceTasks;
-  JSON: TJSONArray;
   BoardId, SectionId: Integer;
 begin
   Tasks := TServiceTasks.Create;
   try
     BoardId := Req.Params['board_id'].ToInteger;
     SectionId := Req.Params['section_id'].ToInteger;
-
-    Tasks.Get(BoardId, SectionId).ToJson(JSON);
-
-    Res.Send(JSON);
+    Res.Send(Tasks.Get(BoardId, SectionId).ToJSONArray());
   finally
     Tasks.Free;
   end;
 end;
 
-procedure Tasks(App: THorse);
+procedure Registry;
 begin
-  App.Post('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoPostTask);
-  App.Get('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoGetTasks);
+  THorse.Post('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoPostTask);
+  THorse.Get('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoGetTasks);
 end;
 
 end.

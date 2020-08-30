@@ -1,17 +1,15 @@
-unit Providers.Authorization;
+unit Kanbana.Providers.Authorization;
 
 interface
 
-uses
-  Horse, Horse.JWT, Horse.BasicAuthentication;
+uses Horse, Horse.JWT, Horse.BasicAuthentication;
 
 function Authorization: THorseCallback;
 function BasicAuthorization: THorseCallback;
 
 implementation
 
-uses
-  Configs.Login, Services.Users;
+uses Kanbana.Configs.Login, Kanbana.Services.Users;
 
 function DoBasicAuthentication(const Username, Password: string): Boolean;
 var

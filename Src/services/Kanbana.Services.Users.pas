@@ -1,14 +1,11 @@
-unit Services.Users;
+unit Kanbana.Services.Users;
 
 interface
 
-uses
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.ConsoleUI.Wait,
-  Data.DB, FireDAC.Comp.Client, FireDAC.Phys.PG, FireDAC.Phys.PGDef,
-  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, Ragna, System.Hash, System.JSON, Providers.Connection;
+uses System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.ConsoleUI.Wait, Data.DB,
+  FireDAC.Comp.Client, FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet, Ragna, System.Hash, System.JSON, Kanbana.Providers.Connection, FireDAC.VCLUI.Wait;
 
 type
   TServiceUsers = class(TProviderConnection)
@@ -25,30 +22,20 @@ type
 
 implementation
 
-{%CLASSGROUP 'System.Classes.TPersistent'}
-
-uses Providers.Encrypt;
+uses Kanbana.Providers.Encrypt;
 
 {$R *.dfm}
-
-{ TDataModule1 }
 
 function TServiceUsers.Get: TFDQuery;
 begin
   UsersPassword.Visible := False;
-  Result := Users
-    .OpenUp;
+  Result := Users.OpenUp;
 end;
 
 function TServiceUsers.IsValid(Username, Password: string): Boolean;
 begin
-  Result := not Users
-    .Where(UsersUsername)
-    .Equals(Username)
-    .&And(UsersPassword)
-    .Equals(TProviderEncrypt.Encrypt(Password))
-    .OpenUp
-    .IsEmpty;
+  Result := not Users.Where(UsersUsername).Equals(Username).&And(UsersPassword).Equals(TProviderEncrypt.Encrypt(Password))
+    .OpenUp.IsEmpty;
 end;
 
 function TServiceUsers.Post(User: TJSONObject): TFDQuery;
@@ -56,16 +43,10 @@ var
   Password: string;
 begin
   Password := TProviderEncrypt.Encrypt(User.GetValue<string>('password'));
-
   User.RemovePair('password');
   User.AddPair('password', Password);
-
-  Users
-    .New(User)
-    .OpenUp;
-
+  Users.New(User).OpenUp;
   UsersPassword.Visible := False;
-
   Result := Users;
 end;
 

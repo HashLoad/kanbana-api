@@ -1,9 +1,8 @@
-unit Configs.Encrypt;
+unit Kanbana.Configs.Encrypt;
 
 interface
 
 type
-
   TConfigEncrypt = record
   private
     function GetSecret: string;
@@ -13,10 +12,7 @@ type
 
 implementation
 
-uses
-  System.SysUtils;
-
-{ TConfigEncrypt }
+uses System.SysUtils;
 
 function TConfigEncrypt.GetSecret: string;
 begin
