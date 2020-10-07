@@ -10,6 +10,6 @@
 		"github.com/hashload/horse-basic-auth": "^v1.1.1",
 		"github.com/hashload/horse-jwt": "^1.2.4",
 		"github.com/hashload/jhonson": "^1.0.5",
-		"github.com/hashload/ragna": "^3.2.1"
+		"github.com/hashload/ragna": "^3.2.2"
 	}
 }
