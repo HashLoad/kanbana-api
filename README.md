@@ -12,7 +12,6 @@
 
 * Open an terminal
 * Type `boss install` to install all dependencies
-* Be happy 😄
 * Set the environment variables: 
   * ENCRYPT_SECRET
   * LOGIN_SECRET
@@ -22,3 +21,4 @@
   * DB_DATABASE
   * DB_PASSWORD
   * DB_USER
+* Be happy 😄
