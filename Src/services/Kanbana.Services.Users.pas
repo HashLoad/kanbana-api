@@ -43,7 +43,7 @@ var
   Password: string;
 begin
   Password := TProviderEncrypt.Encrypt(User.GetValue<string>('password'));
-  User.RemovePair('password');
+  User.RemovePair('password').Free;
   User.AddPair('password', Password);
   Users.New(User).OpenUp;
   UsersPassword.Visible := False;

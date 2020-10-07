@@ -28,12 +28,10 @@ begin
 end;
 
 function TServiceSections.Post(BoardId: Integer; Section: TJSONObject): TFDQuery;
-const
-  BOARD_ID = 'boardId';
 begin
   SectionsBoardId.Visible := True;
-  Section.RemovePair(BOARD_ID).Free;
-  Section.AddPair(BOARD_ID, TJSONNumber.Create(BoardId));
+  Section.RemovePair('boardId').Free;
+  Section.AddPair('boardId', TJSONNumber.Create(BoardId));
   Result := Sections.New(Section).OpenUp;
   SectionsBoardId.Visible := False;
 end;
