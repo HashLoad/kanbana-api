@@ -22,3 +22,6 @@
   * `DB_PASSWORD`
   * `DB_USER`
 * Be happy 😄
+
+######  Postman:
+Import the [file](https://github.com/HashLoad/kanbana-api/blob/master/kanbana-api.postman_collection.json) into [Postman](https://www.postman.com/) to test the API.
