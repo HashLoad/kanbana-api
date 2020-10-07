@@ -28,9 +28,14 @@ begin
 end;
 
 function TServiceTasks.Post(BoardId, SectionId: Integer; Task: TJSONObject): TFDQuery;
+const
+  SECTION_ID = 'sectionId';
 begin
-  Task.AddPair(TasksSectionId.FieldName, TJSONNumber.Create(SectionId));
+  TasksSectionId.Visible := True;
+  Task.RemovePair(SECTION_ID).Free;
+  Task.AddPair(SECTION_ID, TJSONNumber.Create(SectionId));
   Result := Tasks.New(Task).OpenUp;
+  TasksSectionId.Visible := False;
 end;
 
 end.
