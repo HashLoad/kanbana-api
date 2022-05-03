@@ -34,8 +34,8 @@ end;
 
 procedure Registry;
 begin
-  THorse.Post('/boards', Authorization(), DoPostBoard);
-  THorse.Get('/boards', Authorization(), DoGetBoards);
+  THorse.AddCallback(Authorization()).Post('/boards', DoPostBoard);
+  THorse.AddCallback(Authorization()).Get('/boards', DoGetBoards);
 end;
 
 end.

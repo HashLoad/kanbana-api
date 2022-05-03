@@ -38,8 +38,8 @@ end;
 
 procedure Registry;
 begin
-  THorse.Post('/boards/:board_id/sections', Authorization(), DoPostSection);
-  THorse.Get('/boards/:board_id/sections', Authorization(), DoGetSections);
+  THorse.AddCallback(Authorization()).Post('/boards/:board_id/sections', DoPostSection);
+  THorse.AddCallback(Authorization()).Get('/boards/:board_id/sections', DoGetSections);
 end;
 
 end.

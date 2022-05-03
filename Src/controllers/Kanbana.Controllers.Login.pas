@@ -25,7 +25,7 @@ end;
 
 procedure Registry;
 begin
-  THorse.Get('/login', BasicAuthorization(), DoGetLogin);
+  THorse.AddCallback(BasicAuthorization()).Get('/login', DoGetLogin);
 end;
 
 end.

@@ -40,8 +40,8 @@ end;
 
 procedure Registry;
 begin
-  THorse.Post('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoPostTask);
-  THorse.Get('/boards/:board_id/sections/:section_id/tasks', Authorization(), DoGetTasks);
+  THorse.AddCallback(Authorization()).Post('/boards/:board_id/sections/:section_id/tasks', DoPostTask);
+  THorse.AddCallback(Authorization()).Get('/boards/:board_id/sections/:section_id/tasks', DoGetTasks);
 end;
 
 end.
