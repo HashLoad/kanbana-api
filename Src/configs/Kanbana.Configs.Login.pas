@@ -18,7 +18,7 @@ uses System.SysUtils;
 
 function TConfigLogin.GetExpires: Integer;
 begin
-  Result := GetEnvironmentVariable('LOGIN_EXPIRE').ToInteger('1');
+  Result := GetEnvironmentVariable('LOGIN_EXPIRE').ToInteger;
 end;
 
 function TConfigLogin.GetSecret: string;
